@@ -1,6 +1,5 @@
 'use strict';
 
-const { random, fake } = require('faker');
 const faker = require('faker');
 
 module.exports = {
@@ -14,7 +13,7 @@ module.exports = {
     let date = faker.date.past();
     while (nombre--) {
       data.push({
-        username: faker.internet.userName,
+        username: faker.internet.userName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
         role: faker.helpers.randomize(roles),
