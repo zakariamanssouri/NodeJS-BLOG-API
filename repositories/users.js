@@ -7,7 +7,7 @@ module.exports = {
     },
 
     getUsers(offset = 0, limit = 10) {
-        return User.finAndCountAll({
+        return User.findAndCountAll({
             limit: limit,
             offset: offset,
             order: [['createdAt', 'DESC']]
@@ -42,7 +42,7 @@ module.exports = {
     },
 
     getUser(id) {
-        return User.finAll({
+        return User.findAll({
             where: {
                 id: id
             }
