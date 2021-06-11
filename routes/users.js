@@ -6,7 +6,7 @@ const usersRepo = require('../repositories/users')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
   const limit = parseInt(req.query.limit) || 10;
-  const offset = parseInt(req.query.offset) || 0;
+  const offset = parseInt(req.query.offset) || 1;
   res.send(await usersRepo.getUsers(offset, limit))
 });
 
@@ -27,23 +27,14 @@ router.post('/', async function (req, res, next) {
 
 router.put('/', async function (req, res, next) {
   const user = req.body;
-  const retreivedUser = await usersRepo.getUser(user.id)
-
-  console.log(retreivedUser)
-  if (retreivedUser.length != 0) {
-    res.send(await usersRepo.updateUser(user))
-  }
-  else {
-    res.status(400).json({ message: 'no user with id ' + user.id })
-  }
-
+  res.send(await usersRepo.updateUser(user))
 });
 
 
 router.delete('/:id', async function (req, res, next) {
   const id = req.params.id
   await usersRepo.deleteUser(id)
-  res.send({ id })
+  res.send({ message: "success" })
 }
 )
 

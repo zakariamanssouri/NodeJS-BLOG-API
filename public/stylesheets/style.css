@@ -6,3 +6,35 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.bgcolsh {
+  background-color:00B7FF;
+  box-shadow: 0px 0px 8px 3px black !important;
+}
+.card-footer{
+  background-color:00B7FF;
+
+}
+
+h1 {
+  background-color: 00B7FF;
+  margin: -1;
+}
+.bodycard{
+  background-color: #e74645;
+  border-top: 0px;
+}
+
+.p-2 {
+  padding: 0.1rem!important;
+}
+
+.card-header {
+  padding: 0;
+  margin: 0;
+}
+
+.padd{
+  padding: 12px;
+}
