@@ -7,7 +7,7 @@ module.exports = {
         return Articles.findAll()
     },
 
-    getUsers(offset = 0, limit = 10) {
+    getArticles(offset = 0, limit = 10) {
         return User.findAndCountAll({
             limit: limit,
             offset: offset,

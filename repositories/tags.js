@@ -6,6 +6,13 @@ module.exports = {
     addtag(tag) {
         return Tag.create(tag)
     },
+    getTag(id) {
+        return Tag.findOne({
+            where: {
+                id: id
+            }
+        })
+    },
     updateTag(tag) {
         return Tag.update(tag,
             {
