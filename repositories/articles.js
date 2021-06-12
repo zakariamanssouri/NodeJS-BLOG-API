@@ -1,14 +1,14 @@
-const { Articles } = require('../models')
+const { Article } = require('../models')
 const models = require('../models')
 
 module.exports = {
 
     getAllArticles() {
-        return Articles.findAll()
+        return Article.findAll()
     },
 
     getArticles(offset = 0, limit = 10) {
-        return User.findAndCountAll({
+        return Article.findAndCountAll({
             limit: limit,
             offset: offset,
             where: {}
@@ -18,7 +18,7 @@ module.exports = {
 
 
     getArticle(id) {
-        return Articles.findOne({
+        return Article.findOne({
             where: {
                 id: id
             }
@@ -27,11 +27,11 @@ module.exports = {
     },
 
     addArticle(article) {
-        return Articles.create(article)
+        return Article.create(article)
     },
 
     updateArticle(article) {
-        return Articles.update(article,
+        return Article.update(article,
             {
                 where: {
                     id: article.id
@@ -40,7 +40,7 @@ module.exports = {
     },
 
     deleteArticle(id) {
-        return Articles.destroy(
+        return Article.destroy(
             {
                 where: {
                     id: id
@@ -50,7 +50,7 @@ module.exports = {
     },
 
     getArticlewithComments(id) {
-        return Articles.findOne({
+        return Article.findOne({
             where: {
                 id: id
             },
