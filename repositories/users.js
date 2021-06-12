@@ -80,5 +80,13 @@ module.exports = {
                 }
             }
         )
+    },
+    findUserArticles(id) {
+        return User.findOne({
+            where: {
+                id: id
+            },
+            include: Article
+        })
     }
 }

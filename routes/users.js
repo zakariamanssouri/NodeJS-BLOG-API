@@ -35,8 +35,12 @@ router.delete('/:id', async function (req, res, next) {
   const id = req.params.id
   await usersRepo.deleteUser(id)
   res.send({ message: "success" })
-}
-)
+});
+
+router.get('/articles/:id', async function (req, res, next) {
+  res.send(await usersRepo.findUserArticles(req.params.id))
+})
+
 
 
 
