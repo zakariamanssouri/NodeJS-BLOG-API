@@ -1,28 +1,38 @@
 'use strict';
-
+const { random } = require('faker');
 const faker = require('faker');
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    /**
+     * Add seed commands here.
+     **
 
-    let data = [];
-    let nombre = 20;
-
+    const usersData = [];
     const roles = ['admin', 'author', 'guest']
 
-    let date = faker.date.past();
-    while (nombre--) {
-      data.push({
+
+    for (let i = 0; i < 20; i++) {
+      const date = faker.date.past()
+      const user = {
         username: faker.internet.userName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
         role: faker.helpers.randomize(roles),
         createdAt: date,
         updatedAt: date
-      })
+      }
+      usersData.push(user)
     }
-    console.log(data)
-    await queryInterface.bulkInsert('Users', data, {});
+    const objs = queryInterface.bulkInsert('Users', usersData);
+    console.log(objs);
+    return objs;
+    /** 
+    * Example:
+    * await queryInterface.bulkInsert('People', [{
+    *   name: 'John Doe',
+    *   isBetaMember: false
+    * }], {});
+   */
   },
 
   down: async (queryInterface, Sequelize) => {
