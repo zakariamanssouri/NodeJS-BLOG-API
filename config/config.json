@@ -19,5 +19,6 @@
     "database": "zakaria",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  }
+  },
+  "secret": "224c8880405246cb286f9b95cfba498f585ac7f761f9afdc96c5df1f0b44a573640e9ebb49df1acedf1715590bca5761bbb1ca2b2b8ff31c4242c9be305b59b6"
 }
