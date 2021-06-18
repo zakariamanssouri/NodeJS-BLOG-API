@@ -9,7 +9,7 @@ $("#updateBtn").hide();
 function showpaginatedusers() {
     $("#tab > tbody").empty();
     refreshForm()
-    fetch(`http://127.0.0.1:3000/users?offset=${offset}&limit=${limit}`).then(response => {
+    fetch(`http://localhost:3000/users?offset=${offset}&limit=${limit}`).then(response => {
         if (!response.ok) {
             throw Error("ERROR on getting users")
         }
@@ -69,7 +69,7 @@ function updateUser(event) {
     const id = parseInt($("#userId").val())
     Object.assign(user, { id: id })
     console.log(user)
-    fetch('http://127.0.0.1:3000/users', {
+    fetch('http://localhost:3000/users', {
         method: 'PUT',
         body: JSON.stringify(user),
         headers: { 'Content-type': 'application/json; charset=UTF-8' }
@@ -78,7 +78,7 @@ function updateUser(event) {
         .then(() => {
             refreshForm()
             showpaginatedusers()
-            showMsg(`l'utilisateur avec l'id ${id} est modifié avec success`)
+            showMsg("l'utilisateur avec l'id ${id} est modifié avec success", "danger")
         })
 
 }
@@ -127,23 +127,26 @@ function clearMsgs() {
 }
 
 function deleteUser(id) {
-    fetch('http://127.0.0.1:3000/users/' + id, { method: 'DELETE' })
+    clearMsgs()
+    fetch('http://localhost:3000/users/' + id, { method: 'DELETE' })
         .then(handleErrors)
         .then(() => {
             $("#tab > tbody").empty();
             showpaginatedusers()
+            showMsg(`User with id = ${id} deleted successfully!`, danger)
         })
 }
 
 function addUser(event) {
     event.preventDefault()
+    clearMsgs()
     const user = formData()
-    fetch('http://127.0.0.1:3000/users', {
+    fetch('http://localhost:3000/users', {
         method: 'POST',
         body: JSON.stringify(user),
         headers: { "Content-Type": "application/json" }
     }).then(() => {
-        showMsg(`l'utilisateur ${user.username} a été créé avec success`)
+        showMsg(`l'utilisateur ${user.username} a été créé avec success`, success)
         refreshForm()
         showpaginatedusers()
     })
