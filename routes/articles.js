@@ -33,7 +33,8 @@ router.delete('/:id', async function (req, res, next) {
 
 router.get('/:id/comments', async function (req, res, nex) {
     const id = req.params.id
-    await articlesRepo.getArticlewithComments(id);
+    console.log(id)
+    res.send(await articlesRepo.getArticlewithComments(id))
 }
 )
 
