@@ -20,9 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/dashbord', verify, async function (req, res, next) {
-    res.sendFile(path.join(__dirname, './public/welcome.html'));
-})
 
 
 app.use('/', indexRouter);
@@ -31,4 +28,8 @@ app.use('/users', usersRouter);
 app.use('/articles', arcticlesRouter)
 app.use('/tags', tagsRouter)
 app.use('/comments', commentsRouter)
+
+app.get('/dashbord', verify, async function (req, res, next) {
+    res.sendFile(path.join(__dirname, './public/welcome.html'));
+})
 module.exports = app;

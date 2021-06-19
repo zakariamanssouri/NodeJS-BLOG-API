@@ -11,7 +11,7 @@ exports.login = async (req, res) => {
     }
     let payload = { username: retreivedUser.dataValues.username, role: retreivedUser.dataValues.role }
     req.body.payload = payload;
-    let accessToken = jwt.sign(payload, config.secret, { expiresIn: '5s' })
+    let accessToken = jwt.sign(payload, config.secret, { expiresIn: '1m' })
     res.cookie("token", accessToken)
     res.redirect('http://localhost:3000/dashbord')
 }

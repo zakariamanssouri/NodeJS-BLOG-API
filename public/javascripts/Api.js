@@ -68,7 +68,6 @@ function updateUser(event) {
     const user = formData()
     const id = parseInt($("#userId").val())
     Object.assign(user, { id: id })
-    console.log(user)
     fetch('http://localhost:3000/users', {
         method: 'PUT',
         body: JSON.stringify(user),
@@ -78,7 +77,7 @@ function updateUser(event) {
         .then(() => {
             refreshForm()
             showpaginatedusers()
-            showMsg("l'utilisateur avec l'id ${id} est modifié avec success", "danger")
+            showMsg(`l'utilisateur avec l'id ${id} est modifié avec success`, "success")
         })
 
 }
@@ -128,7 +127,7 @@ function clearMsgs() {
 
 function deleteUser(id) {
     clearMsgs()
-    fetch('http://localhost:3000/users/' + id, { method: 'DELETE' })
+    fetch(`http://localhost:3000/users/${id}`, { method: 'DELETE' })
         .then(handleErrors)
         .then(() => {
             $("#tab > tbody").empty();
@@ -146,7 +145,7 @@ function addUser(event) {
         body: JSON.stringify(user),
         headers: { "Content-Type": "application/json" }
     }).then(() => {
-        showMsg(`l'utilisateur ${user.username} a été créé avec success`, success)
+        showMsg(`l'utilisateur ${user.username} a été créé avec success`, "success")
         refreshForm()
         showpaginatedusers()
     })

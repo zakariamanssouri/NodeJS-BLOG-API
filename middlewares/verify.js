@@ -18,7 +18,6 @@ exports.verify = function (req, res, next) {
         payload = jwt.verify(accessToken, config.secret)
         req.body.payload = payload
     } catch (error) {
-        console.log(error)
         res.redirect('/')
     }
     next()
