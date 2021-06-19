@@ -9,9 +9,11 @@ exports.login = async (req, res) => {
     if (!retreivedUser || !email || !password || retreivedUser.password !== password) {
         res.status(403).send("your email or password is incorrect")
     }
-    let payload = { username: retreivedUser.dataValues.username, role: retreivedUser.dataValues.role }
-    req.body.payload = payload;
-    let accessToken = jwt.sign(payload, config.secret, { expiresIn: '1m' })
-    res.cookie("token", accessToken)
-    res.redirect('http://localhost:3000/dashbord')
+    else {
+        let payload = { username: retreivedUser.dataValues.username, role: retreivedUser.dataValues.role }
+        req.body.payload = payload;
+        let accessToken = jwt.sign(payload, config.secret, { expiresIn: '1m' })
+        res.cookie("token", accessToken)
+        res.redirect('http://localhost:3000/dashbord')
+    }
 }
