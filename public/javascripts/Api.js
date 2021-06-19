@@ -79,7 +79,6 @@ function updateUser(event) {
             showpaginatedusers()
             showMsg(`l'utilisateur avec l'id ${id} est modifié avec success`, "success")
         })
-
 }
 
 
@@ -132,7 +131,7 @@ function deleteUser(id) {
         .then(() => {
             $("#tab > tbody").empty();
             showpaginatedusers()
-            showMsg(`User with id = ${id} deleted successfully!`, danger)
+            showMsg(`User with id = ${id} deleted successfully!`, "danger")
         })
 }
 
